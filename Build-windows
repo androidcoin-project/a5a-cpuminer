@@ -1,0 +1,67 @@
+Instructions for compiling a5a-cpuminer on Windows:
+
+Dependencies:
+	libcurl			http://curl.haxx.se/libcurl/
+	libgmp			http://gmplib.org/
+	openssl			http://www.openssl.org/
+	jansson			http://www.digip.org/jansson/
+	(jansson is optional, and is included in-tree)
+
+
+1. Download and install Cygwin 64 bit setup from http://www.cygwin.com/. Here
+is a direct link to the latest version: http://cygwin.com/setup-x86_64.exe
+
+2. Run the setup as administrator. Use defaults until you get to the package
+selection screen. Find these packages one by one and click next to them where
+it says 'skip' to mark them for installation (skip should change to a version number):
+
+devel/gcc-g++
+devel/automake
+devel/autogen
+devel/make
+devel/clang
+devel/libc++devel
+devel/git
+libs/libcurl-devel
+libs/gmp
+net/openssl-devel
+
+3. Hit next, then next again to mark all dependencies and begin downloading / 
+installing packages.
+
+4. Wait a few minutes for everything to finish downloading/installing.
+
+5. Hit finish.
+
+6. Open a cygwin terminal as administrator either by going to Start menu -> Cygwin
+-> Cygwin 64 terminal, or runing C:\Cygwin64\cygwin.bat. All future commands are
+done from this terminal.
+
+7. Download a5a-cpuminer source from their github using the following command:
+
+git clone https://github.com/androidcoin-project/a5a-cpuminer.git
+
+8. Change dirs:
+
+cd a5a-cpuminer
+
+9. Mark autogen.sh as executable:
+
+chmod +x autogen.sh
+
+10. Run autogen.sh
+
+./autogen.sh
+
+11. Run the configure script, optimizing it for speed:
+
+CFLAGS="-O3 -march=native" ./configure
+
+12. Compile it:
+
+make
+
+13. Assuming you have no errors, run it in benchmark mode:
+
+./minerd.exe --benchmark
+
