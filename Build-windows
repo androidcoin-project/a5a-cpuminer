@@ -60,8 +60,17 @@ CFLAGS="-O3 -march=native" ./configure
 12. Compile it:
 
 make
+13. Add "C:\cygwin64\bin" path to system environment variables.
 
-13. Assuming you have no errors, run it in benchmark mode:
+export CYGWIN_HOME=C:/cygwin64/bin
+
+export PATH=$PATH:$CYGWIN_HOME
+
+14. Assuming you have no errors, run it in benchmark mode:
 
 ./minerd.exe --benchmark
+ctrl + c for stop
 
+15. run for yiimp pool settings
+
+./minerd.exe -o stratum+tcp://pool_address:port -u username_or_wallet_address -p c=AND,d=4.00	-t 4
